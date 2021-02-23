@@ -1,0 +1,43 @@
+{
+  "name": {
+    "CN": {
+      "title": "猫猫按钮",
+      "fullName": "Hiiro"
+    },
+    "EN": {
+      "title": "Hiiro Button",
+      "fullName": "Hiiro"
+    }
+  },
+  "header": {
+    "icon": "🍣",
+    "youtube": "",
+    "twitter": "",
+    "bilibili": "https://live.bilibili.com/21919321"
+  },
+  "footer": {
+    "author": [
+      {
+        "name": "blacktunes",
+        "url": "https://github.com/blacktunes"
+      }
+    ],
+    "info": [
+      "<div>偶尔可能会发点更新信息的B站→<a href=\"https: //space.bilibili.com/1384118\">我想改个带咸鱼的名字</a></div>",
+      "<img style=\"margin: 5px 5px 0px -2px\" alt=\"GitHub Repo stars\" src=\"https://img.shields.io/github/stars/blacktunes/hiiro-button?style=social\"><img style=\"margin-top: 5px\" alt=\"GitHub Repo license\" src=\"https://img.shields.io/github/license/blacktunes/hiiro-button?style=social\">"
+    ],
+    "githubUrl": "https://github.com/blacktunes/hiiro-button"
+  },
+  "console": {
+    "text": "HIIRO",
+    "size": "24px",
+    "color": "pink",
+    "img": "hiiro.png",
+    "imgWidth": "100%",
+    "imgHeight": "56%"
+  },
+  "mediaSession": "albums.jpg",
+  "GA_ID_comment": "GA_ID用于统计访问，请使用模板开发务必修改或删除",
+  "GA_ID": "UA-176441751-2",
+  "CDN": "https://cdn.jsdelivr.net/gh/blacktunes/hiiro-button@master/public/voices"
+}
