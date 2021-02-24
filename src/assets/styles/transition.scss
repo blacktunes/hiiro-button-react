@@ -1,0 +1,39 @@
+.slide-up-appear {
+  transform: translateY(100%);
+}
+.slide-up-appear-done {
+  transition: all 0.5s;
+  transform: translateY(0);
+}
+
+.slide-down-appear {
+  transform: translateY(-100%);
+}
+.slide-down-appear-done {
+  transition: all 0.5s;
+  transform: translateY(0);
+}
+
+@keyframes logo {
+  0% {
+    transform: scale(1, 1);
+  }
+  40% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes logo-restart {
+  0% {
+    transform: scale(1, 1);
+  }
+  40% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
