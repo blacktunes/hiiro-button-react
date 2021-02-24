@@ -4,6 +4,7 @@ import App from './App'
 import './assets/styles/transition.scss'
 import './index.scss'
 import reportWebVitals from './reportWebVitals'
+import Control from './views/Control'
 import Footer from './views/Footer'
 import Header from './views/Header'
 
@@ -11,6 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Header />
     <App />
+    <Control />
     <Footer />
   </React.StrictMode>,
   document.getElementById('root')

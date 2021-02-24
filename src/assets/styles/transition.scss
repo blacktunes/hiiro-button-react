@@ -1,3 +1,24 @@
+.fade-enter, .fade-exit-done {
+  opacity: 0;
+}
+.fade-exit, .fade-enter-done {
+  opacity: 1;
+}
+.fade-enter-active, .fade-exit-active {
+  transition: opacity 0.3s;
+}
+
+.fade-delay-enter, .fade-delay-exit-done {
+  opacity: 0;
+}
+.fade-delay-exit, .fade-delay-enter-done {
+  opacity: 1;
+}
+.fade-delay-enter-active, .fade-delay-exit-active {
+  transition: opacity 0.3s;
+  transition-delay: 0.3s;
+}
+
 .slide-up-appear {
   transform: translateY(100%);
 }
