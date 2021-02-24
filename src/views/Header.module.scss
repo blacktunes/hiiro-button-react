@@ -1,3 +1,5 @@
+@import '../setting//color.scss';
+
 .header {
   z-index: 5;
   display: flex;
@@ -5,7 +7,7 @@
   position: sticky;
   top: 0;
   height: 48px;
-  background: linear-gradient(to right, #F5C1BB, #F5F0F2), rgba(255, 255, 255, 0.8);
+  background: linear-gradient(to right, $main-color, $sub-color), rgba(255, 255, 255, 0.8);
   * {
     flex-shrink: 0;
   }

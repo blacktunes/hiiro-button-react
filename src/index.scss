@@ -1,3 +1,5 @@
+@import './setting/color.scss';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -25,15 +27,15 @@ a {
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #F5F0F2;
+  background-color: $sub-color;
 }
 
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #F5C1BB;
+  background-color: $main-color;
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background-color: #FADBD8;
+  background-color: $active-color;
 }
