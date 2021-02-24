@@ -3,17 +3,19 @@ import styles from './IconBtn.module.scss'
 import youtube from '../../assets/image/youtube-fill.png'
 import twitter from '../../assets/image/twitter-fill.png'
 import bilibili from '../../assets/image/bilibili-fill.png'
+import github from '../../assets/image/github-fill.png'
 
 interface Props {
-  url: string
-  type: 'youtube' | 'twitter' | 'bilibili'
+  url?: string
+  type: 'youtube' | 'twitter' | 'bilibili' | 'github'
 }
 
 class IconBtn extends Component<Props> {
   list = {
     youtube,
     twitter,
-    bilibili
+    bilibili,
+    github
   }
   render() {
     return (

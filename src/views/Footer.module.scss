@@ -1,0 +1,57 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 5px;
+  background-color: #ebebeb;
+  font-size: 12px;
+  color: #333;
+
+  .author {
+    display: flex;
+    align-items: center;
+  }
+
+  .info {
+    margin-top: 5px;
+    line-height: 18px;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+    .git {
+      display: flex;
+      align-items: center;
+
+      a {
+        margin: 0;
+      }
+
+      .btn {
+        margin: 0 5px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+  }
+
+    .text-right {
+      text-align: left;
+    }
+
+      .git {
+        display: flex;
+        align-items: center;
+
+        .btn {
+          order: 10;
+        }
+      }
+}
