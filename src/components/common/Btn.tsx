@@ -2,7 +2,7 @@ import styles from './Btn.module.scss'
 
 interface Props {
   name: string
-  url: string
+  url?: string
   color?: string
   background?: string
 }

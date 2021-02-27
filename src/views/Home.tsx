@@ -1,12 +1,17 @@
 
+import { createRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FriendlyLink, INFO_I18N } from './assets/script/type'
-import Btn from './components/common/Btn'
-import Card from './components/common/Card'
+import mitt from '../assets/script/mitt'
+import { EVENT, FriendlyLink, INFO_I18N } from '../assets/script/type'
+import Btn from '../components/common/Btn'
+import Card from '../components/common/Card'
+import Voice from '../components/Voice'
 import styles from './Home.module.scss'
 
 const Home = () => {
   const { t } = useTranslation()
+
+  const voice = createRef<any>()
 
   // 友链列表
   const friendlyLinkList: FriendlyLink[] = [
@@ -17,8 +22,23 @@ const Home = () => {
     }
   ]
 
+  let isRestart = false
+  mitt.on(EVENT.changeShowInfo, e => {
+    if (!voice.current) return
+    if (isRestart) {
+      voice.current.style.animation = 'voice 0.5s'
+      isRestart = !isRestart
+    } else {
+      voice.current.style.animation = 'voice-restart 0.5s'
+      isRestart = !isRestart
+    }
+  })
+
   return (
     <div className={ styles.home }>
+      <div ref={ voice }>
+        <Voice />
+      </div>
       <Card>
         <div style={ { textAlign: 'center' } }>
           { t(INFO_I18N.voiceTotalTip) }:  { t(INFO_I18N.voiceTotal)

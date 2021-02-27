@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Home from './Home'
+import './assets/script/i18n'
 import './assets/styles/transition.scss'
 import './index.scss'
 import reportWebVitals from './reportWebVitals'
 import Control from './views/Control'
 import Footer from './views/Footer'
 import Header from './views/Header'
-import './assets/script/i18n'
+import Home from './views/Home'
 
 ReactDOM.render(
   <React.StrictMode>

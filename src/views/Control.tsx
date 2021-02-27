@@ -78,6 +78,7 @@ const Control = () => {
     infoDate.title = ''
     infoDate.time = ''
     infoDate.url = ''
+    mitt.emit(EVENT.changeShowInfo, playSetting.showInfo)
   }
 
   return (

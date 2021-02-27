@@ -13,7 +13,11 @@ export enum EVENT {
   /**
    * 滚动到指定位置
    */
-  autoScroll = 'autoScroll'
+  autoScroll = 'autoScroll',
+  /**
+   * 切换分类排序
+   */
+  changeShowInfo = 'changeShowInfo'
 }
 
 /**
