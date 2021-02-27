@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import Home from './Home'
 import './assets/styles/transition.scss'
 import './index.scss'
 import reportWebVitals from './reportWebVitals'
@@ -12,7 +12,9 @@ import './assets/script/i18n'
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <App />
+    <div style={ { minHeight: 'calc(100vh - 48px - 78px)' } }>
+      <Home />
+    </div>
     <Control />
     <Footer />
   </React.StrictMode>,
