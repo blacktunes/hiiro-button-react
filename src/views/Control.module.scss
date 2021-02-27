@@ -1,11 +1,5 @@
 @import '../setting/color.scss';
 
-a {
-  margin: 0;
-  color: $title-color;
-  font-size: 14px;
-}
-
 .control {
   z-index: 5;
   display: flex;
@@ -15,6 +9,11 @@ a {
   position: sticky;
   bottom: 0;
   background: rgba(255, 255, 255, 0.7);
+  a {
+    margin: 0;
+    color: $title-color;
+    font-size: 14px;
+  }
   .playing {
     position: relative;
     margin: 10px 0;

@@ -1,11 +1,5 @@
 @import '../../setting/color.scss';
 
-a {
-  margin: 0;
-  color: $btn-text-color;
-  padding: 5px 15px;
-}
-
 .btn {
   display: flex;
   align-items: center;
@@ -19,6 +13,12 @@ a {
   user-select: none;
   cursor: pointer;
   transition: box-shadow 0.25s;
+
+  a {
+    margin: 0;
+    color: $btn-text-color;
+    padding: 5px 15px;
+  }
 
   &:hover {
     background: $hover-color;

@@ -20,7 +20,9 @@ class IconBtn extends Component<Props> {
   render() {
     return (
       <a href={ this.props.url } className={ styles.icon } target="_blank" rel="noreferrer">
-        <img draggable="false" src={ this.list[this.props.type] } alt="" />
+        <div className={ styles.bg }>
+          <img draggable="false" src={ this.list[this.props.type] } alt="" />
+        </div>
       </a>
     )
   }
