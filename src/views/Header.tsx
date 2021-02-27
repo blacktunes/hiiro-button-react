@@ -1,4 +1,4 @@
-import React from 'react'
+import { constructor, createRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CSSTransition } from 'react-transition-group'
 import { INFO_I18N } from '../assets/script/type'
@@ -16,13 +16,15 @@ const HEADER: {
 const Header = () => {
   const { t, i18n } = useTranslation()
 
-  // 初次加载时获取localStorage的语言设定
-  const lang = localStorage.getItem('lang')
-  if (lang) i18n.language = lang
-  document.title = t(INFO_I18N.title)
+  constructor(() => {
+    // 初次加载时获取localStorage的语言设定
+    const lang = localStorage.getItem('lang')
+    if (lang) i18n.changeLanguage(lang)
+    document.title = t(INFO_I18N.title)
+  })
 
   // 点击图标时的放大动画
-  const logo = React.createRef<any>()
+  const logo = createRef<any>()
   let isRestart = false
   const logoClick = () => {
     if (!logo.current) return
