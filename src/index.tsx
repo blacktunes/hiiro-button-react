@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals'
 import Control from './views/Control'
 import Footer from './views/Footer'
 import Header from './views/Header'
+import './assets/script/i18n'
 
 ReactDOM.render(
   <React.StrictMode>

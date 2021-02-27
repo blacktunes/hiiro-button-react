@@ -1,5 +1,7 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { CSSTransition } from 'react-transition-group'
+import { INFO_I18N } from '../assets/script/type'
 import IconBtn from '../components/common/IconBtn'
 import Setting from '../setting/setting.json'
 import styles from './Header.module.scss'
@@ -12,6 +14,13 @@ const HEADER: {
 } = Setting['header'] || {}
 
 const Header = () => {
+  const { t, i18n } = useTranslation()
+
+  // 初次加载时获取localStorage的语言设定
+  const lang = localStorage.getItem('lang')
+  if (lang) i18n.language = lang
+  document.title = t(INFO_I18N.title)
+
   // 点击图标时的放大动画
   const logo = React.createRef<any>()
   let isRestart = false
@@ -30,14 +39,23 @@ const Header = () => {
   }
 
   const changeLang = () => {
-    console.log('切换语音')
+    // TODO 清空搜索结果
+    if (i18n.language === 'en-US') {
+      i18n.changeLanguage('zh-CN')
+      localStorage.setItem('lang', 'zh-CN')
+      document.title = t(INFO_I18N.title)
+    } else {
+      i18n.changeLanguage('en-US')
+      localStorage.setItem('lang', 'en-US')
+      document.title = t(INFO_I18N.title)
+    }
   }
 
   return (
     <CSSTransition in timeout={ 0 } classNames="slide-down" appear>
       <div className={ styles.header }>
         <div style={ { animation: 'logo 1s', animationDelay: '0.5s' } } className={ styles.logo } onClick={ logoClick } ref={ logo }>{ HEADER.icon }</div>
-        <div className={ styles.title }>i18n</div>
+        <div className={ styles.title }>{ t(INFO_I18N.title) }</div>
         { HEADER.youtube ? <IconBtn type="youtube" url={ HEADER.youtube } /> : null }
         { HEADER.twitter ? <IconBtn type="twitter" url={ HEADER.twitter } /> : null }
         { HEADER.bilibili ? <IconBtn type="bilibili" url={ HEADER.bilibili } /> : null }
@@ -56,7 +74,7 @@ const Header = () => {
             />
           </svg>
         </div>
-        <div className={ styles.btn } title="i18n" onClick={ changeLang }>
+        <div className={ styles.btn } onClick={ changeLang } title={ t(INFO_I18N.lang) }>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

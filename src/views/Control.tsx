@@ -1,17 +1,34 @@
+import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { CSSTransition } from 'react-transition-group'
 import { infoDate, playSetting } from '../assets/script/data'
 import mitt from '../assets/script/mitt'
-import { EVENT } from '../assets/script/type'
+import { ACTION_I18N, EVENT } from '../assets/script/type'
 import Error from '../components/common/Error'
 import Loading from '../components/common/Loading'
 import styles from './Control.module.scss'
-import { useState } from 'react'
 
 const Control = () => {
-  const [_overlap, _setOverlap] = useState(false)
-  const [_autoRandom, _setAutoRandom] = useState(false)
-  const [_loop, _setLoop] = useState(0)
-  const [_showInfo, _setShowInfo] = useState(playSetting.showInfo)
+  const { t } = useTranslation()
+
+  const [_playSetting, _setPlaySetting] = useState(playSetting)
+  const [_title, _setTitle] = useState('')
+
+  // 控制栏文字显示
+  useMemo(() => {
+    if (playSetting.overlap) {
+      _setTitle(ACTION_I18N.overlapTip)
+    } else if (playSetting.nowPlay) {
+      _setTitle('voice.' + playSetting.nowPlay.name)
+    } else if (playSetting.autoRandom) {
+      _setTitle(ACTION_I18N.autoRandomTip)
+    } else if (playSetting.loop) {
+      _setTitle(ACTION_I18N.loopTip)
+    } else {
+      _setTitle(ACTION_I18N.noplay)
+    }
+    return _playSetting
+  }, [_playSetting])
 
   const randomPlay = () => {
     mitt.emit(EVENT.randomPlay)
@@ -21,32 +38,40 @@ const Control = () => {
     mitt.emit(EVENT.stopPlay)
   }
 
+  // const setSettingState = <K extends keyof PlaySetting, V = PlaySetting[K]>(k: K, v: V) => {
+  //   const temp: any = {}
+  //   temp[k] = v
+  //   _setPlaySetting({ ..._playSetting, ...temp })
+  // }
+
+  const setSettingState = () => {
+    _setPlaySetting({ ..._playSetting, ...playSetting })
+  }
+
   const overlapChange = () => {
     playSetting.overlap = !playSetting.overlap
-    _setOverlap(playSetting.overlap)
+    setSettingState()
   }
 
   const autoRandomChange = () => {
     playSetting.loop = 0
-    _setLoop(playSetting.loop)
     playSetting.autoRandom = !playSetting.autoRandom
-    _setAutoRandom(playSetting.autoRandom)
+    setSettingState()
   }
 
   const loopChange = () => {
     playSetting.autoRandom = false
-    _setAutoRandom(playSetting.autoRandom)
     if (playSetting.loop < 3) {
       playSetting.loop += 1
     } else {
       playSetting.loop = 0
     }
-    _setLoop(playSetting.loop)
+    setSettingState()
   }
 
   const changeShowInfo = () => {
     playSetting.showInfo = !playSetting.showInfo
-    _setShowInfo(playSetting.showInfo)
+    setSettingState()
     localStorage.setItem('info', playSetting.showInfo.toString())
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
@@ -70,7 +95,7 @@ const Control = () => {
             </div>
           </CSSTransition>
           <div style={ { 'textDecoration': playSetting.error ? 'line-through' : 'none' } }>
-            i18n {
+            { t(_title) } {
               playSetting.showInfo && infoDate && infoDate.time
                 ? `(${infoDate.time})`
                 : ""
@@ -80,7 +105,7 @@ const Control = () => {
         <div className={ styles['btn-wrapper'] }>
           <div
             className={ styles.icon }
-            title="i18n"
+            title={ t(ACTION_I18N.randomplay) }
             onClick={ randomPlay }
           >
             <svg
@@ -96,7 +121,7 @@ const Control = () => {
           </div>
           <div
             className={ styles.icon }
-            title="i18n"
+            title={ t(ACTION_I18N.stopvoice) }
             onClick={ stopPlay }
           >
             <svg
@@ -111,8 +136,8 @@ const Control = () => {
             </svg>
           </div>
           <div
-            className={ `${styles.icon}${_overlap ? ' ' + styles['icon-active'] : ''}` }
-            title="i18n"
+            className={ `${styles.icon}${_playSetting.overlap ? ' ' + styles['icon-active'] : ''}` }
+            title={ t(ACTION_I18N.overlap) }
             onClick={ overlapChange }
           >
             <svg
@@ -127,8 +152,8 @@ const Control = () => {
             </svg>
           </div>
           <div
-            className={ `${styles.icon}${_autoRandom ? ' ' + styles['icon-active'] : ''}` }
-            title="i18n"
+            className={ `${styles.icon}${_playSetting.autoRandom ? ' ' + styles['icon-active'] : ''}` }
+            title={ t(ACTION_I18N.autoRandom) }
             onClick={ autoRandomChange }
           >
             <svg
@@ -145,8 +170,8 @@ const Control = () => {
             </svg>
           </div>
           <div
-            className={ `${styles.icon}${_loop !== 0 ? ' ' + styles['icon-active'] : ''}` }
-            title="i18n"
+            className={ `${styles.icon}${_playSetting.loop !== 0 ? ' ' + styles['icon-active'] : ''}` }
+            title={ t(ACTION_I18N.loop) }
             onClick={ loopChange }
           >
             {
@@ -228,7 +253,7 @@ const Control = () => {
             }
           </div >
           <div
-            className={ `${styles.icon}${_showInfo ? ' ' + styles['icon-active'] : ''}` }
+            className={ `${styles.icon}${_playSetting.showInfo ? ' ' + styles['icon-active'] : ''}` }
             onClick={ changeShowInfo }
           >
             <svg

@@ -1,6 +1,8 @@
-import styles from './Footer.module.scss'
-import Setting from '../setting/setting.json'
+import { useTranslation } from 'react-i18next'
+import { INFO_I18N } from '../assets/script/type'
 import IconBtn from '../components/common/IconBtn'
+import Setting from '../setting/setting.json'
+import styles from './Footer.module.scss'
 
 const FOOTER: {
   author?: {
@@ -16,6 +18,8 @@ const info = FOOTER && FOOTER.info ? FOOTER.info : []
 const githubUrl = FOOTER && FOOTER.githubUrl ? FOOTER.githubUrl : undefined
 
 const Footer = () => {
+  const { t } = useTranslation()
+
   return (
     <div className={ styles.footer }>
       <div>
@@ -47,7 +51,7 @@ const Footer = () => {
           <div className={ styles.btn }>
             <IconBtn type='github' url={ githubUrl } />
           </div>
-          <div>i18n</div>
+          <div>{ t(INFO_I18N.notOfficial) }</div>
         </div>
       </div>
     </div>
